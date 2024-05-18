@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status==\"Scheduled\"",
+ "creation": "2024-05-18 20:52:46.971781",
+ "date_changed": "date_of_departure",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Airplane Flight",
+ "enabled": 1,
+ "event": "Days Before",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Your flight {{doc.name}} will be tommorrow, make arrangement not to miss.",
+ "modified": "2024-05-18 20:52:46.971781",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airplane Reminder Notification",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "System Manager"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "sender": "Mania",
+ "sender_email": "mania@navari.co.ke",
+ "subject": "{{doc.name}} will take off Tomorrow"
+}

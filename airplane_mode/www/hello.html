@@ -1,0 +1,18 @@
+
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<h1>
+    Its Mania testing now baby, hello
+    </h1>
+    <h1>Hello, how are you Mania?</h1>
+{% set user=frappe.session %}
+<ul>
+    <li>
+        {{user.first_name}}
+    </li>
+</ul>
+    <!-- this is a sample default list template -->
+    {% endblock %}
+
+<!-- this is a sample default web page template -->
