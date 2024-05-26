@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-26 14:57:18.583245",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_due_rent_reminder",
+  "default_rent_amount"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enable_due_rent_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Due Rent Reminder"
+  },
+  {
+   "fieldname": "default_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Default Rent Amount"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-05-26 14:58:58.584279",
+ "modified_by": "Administrator",
+ "module": "airport Shop Management",
+ "name": "Airplane Mode settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

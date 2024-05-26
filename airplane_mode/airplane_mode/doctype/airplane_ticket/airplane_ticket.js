@@ -33,5 +33,14 @@ frappe.ui.form.on("Airplane Ticket", {
             __("Actions")
         );
     },
-  
+    source_airport_code: function (frm) {
+        frm.set_query("gate_number", function () {
+            return {
+                filters: {
+                    airport_code: frm.doc.source_airport_code,
+                },
+            };
+        });
+    },
 });
+  

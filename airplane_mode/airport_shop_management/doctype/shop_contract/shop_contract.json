@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{shop}-{tenant}-{##}",
+ "creation": "2024-05-26 15:56:41.506245",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "shop",
+  "column_break_mkpn",
+  "tenant",
+  "section_break_zxlo",
+  "start_date",
+  "column_break_fyln",
+  "expiry_date",
+  "payment_section",
+  "amount",
+  "amended_from",
+  "column_break_vcrw",
+  "status",
+  "contract_terms_section",
+  "contract_template",
+  "contract_terms_and_conditions"
+ ],
+ "fields": [
+  {
+   "fieldname": "shop",
+   "fieldtype": "Link",
+   "label": "Shop",
+   "options": "Shop"
+  },
+  {
+   "fieldname": "column_break_mkpn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "section_break_zxlo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "ignore_user_permissions": 1,
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "column_break_fyln",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "ignore_user_permissions": 1,
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount To Pay"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Shop Contract",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_vcrw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Pending Payment",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "ignore_user_permissions": 1,
+   "label": "Status",
+   "options": "\nActive\nExpired\nTerminated\nPending Payment\nPending Renewal"
+  },
+  {
+   "fieldname": "contract_terms_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Terms"
+  },
+  {
+   "fieldname": "contract_template",
+   "fieldtype": "Link",
+   "label": "Contract Template",
+   "options": "Airport Shop Contract Template"
+  },
+  {
+   "fetch_from": "contract_template.contract_description",
+   "fieldname": "contract_terms_and_conditions",
+   "fieldtype": "Text Editor",
+   "label": "Contract Terms and Conditions",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-26 17:27:53.818040",
+ "modified_by": "Administrator",
+ "module": "airport Shop Management",
+ "name": "Shop Contract",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

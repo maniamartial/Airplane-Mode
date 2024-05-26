@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{gate_number}-#####",
+ "creation": "2024-05-26 14:31:11.774778",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "gate_number",
+  "column_break_iaie",
+  "airport",
+  "airport_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "gate_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Gate Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "airport",
+   "fieldtype": "Link",
+   "label": "Airport",
+   "options": "Airport"
+  },
+  {
+   "fetch_from": "airport.code",
+   "fieldname": "airport_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Airport Code"
+  },
+  {
+   "fieldname": "column_break_iaie",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-26 14:36:13.080241",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airport Gate",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "gate_number, airport",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
