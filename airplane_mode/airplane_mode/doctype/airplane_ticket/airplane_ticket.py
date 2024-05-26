@@ -18,8 +18,8 @@ class AirplaneTicket(Document):
 		if self.status != "Boarded":
 			frappe.throw(f"Cannot submit ticket no {self.name}. Passenger is not on board")
    
-	def after_submit(self):
-		self.status="Completed"
+	# def after_submit(self):
+	# 	self.status="Completed"
   
 	def get_total_amount(self):
 		total=0 +self.flight_price
@@ -45,3 +45,46 @@ class AirplaneTicket(Document):
 			random_integer = random.randint(1, 99)  # Adjust the range as needed
 			random_letter = random.choice('ABCDE')
 			self.seat = f"{random_integer}{random_letter}"
+	def on_submit(self):
+		
+		available_seats = self.show_available_seats()
+		frappe.publish_realtime(
+			"show_available_seats", {"available_seats": available_seats}
+		)
+		self.check_plane_capacity()
+	
+   
+	def check_plane_capacity(self):
+		plane_capacity = frappe.db.get_all(
+			"Airplane Flight",
+			filters={"name": self.flight},
+			fields=["airplane.capacity"],
+		)[0].get("capacity", 0)
+
+		number_of_tickets = frappe.db.get_all(
+			"Airplane Ticket",
+			filters={"flight": self.flight, "docstatus":1},
+			fields=["COUNT(name) AS number_of_tickets"],
+		)[0].get("number_of_tickets")
+
+		if int(number_of_tickets) >= int(plane_capacity):
+			frappe.throw("Flight is fully booked")
+			
+	@frappe.whitelist()
+	def show_available_seats(self):
+		plane_capacity = frappe.db.get_all(
+			"Airplane Flight",
+			filters={"name": self.flight},
+			fields=["airplane.capacity"],
+		)[0].get("capacity", 0)
+
+		number_of_tickets = frappe.db.get_all(
+			"Airplane Ticket",
+			filters={"flight": self.flight, "docstatus":1},
+			fields=["COUNT(name) AS number_of_tickets"],
+		)[0].get("number_of_tickets")
+		seats_available=plane_capacity - number_of_tickets
+  
+		if seats_available<0:
+			seats_available=0
+		return seats_available

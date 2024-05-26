@@ -2,25 +2,48 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "prompt",
- "creation": "2024-05-18 12:28:20.986726",
+ "creation": "2024-05-01 18:51:54.761152",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "description"
+  "code",
+  "city",
+  "column_break_wybs",
+  "country"
  ],
  "fields": [
   {
-   "fieldname": "description",
+   "fieldname": "code",
    "fieldtype": "Data",
-   "label": "Description"
+   "in_list_view": 1,
+   "label": "Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wybs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Country",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-18 12:29:07.438873",
+ "modified": "2024-05-01 19:41:14.334001",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
- "name": "Airplane Ticket Add-on Type",
+ "name": "Airport",
  "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
@@ -37,16 +60,13 @@
      "write": 1
     },
     {
-     "create": 1,
-     "delete": 1,
      "email": 1,
      "export": 1,
      "print": 1,
      "read": 1,
      "report": 1,
      "role": "Fleet Manager",
-     "share": 1,
-     "write": 1
+     "share": 1
     },
     {
      "email": 1,
@@ -71,15 +91,13 @@
      "write": 1
     },
     {
-     "create": 1,
      "email": 1,
      "export": 1,
      "print": 1,
      "read": 1,
      "report": 1,
      "role": "Flight Crew Member",
-     "share": 1,
-     "write": 1
+     "share": 1
     }
    ],
  "sort_field": "modified",
