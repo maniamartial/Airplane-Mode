@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{first_name}-{#####}",
  "creation": "2024-05-26 15:01:09.552988",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -56,10 +57,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-26 15:17:39.918356",
+ "modified": "2024-06-08 09:13:16.019571",
  "modified_by": "Administrator",
  "module": "airport Shop Management",
  "name": "Crew Member",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

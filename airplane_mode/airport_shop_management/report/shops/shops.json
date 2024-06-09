@@ -1,0 +1,44 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-06-08 12:30:54.310606",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "airport",
+   "fieldtype": "Link",
+   "label": "Airport",
+   "mandatory": 0,
+   "options": "Airport",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letterhead": null,
+ "modified": "2024-06-08 12:44:25.662250",
+ "modified_by": "Administrator",
+ "module": "airport Shop Management",
+ "name": "Shops",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "# Define columns for the report\ncolumns = [\n    {\"fieldname\": \"name\", \"label\": \"Invoice Name\", \"fieldtype\": \"Link\", \"options\": \"Sales Invoice\", \"width\": 150},\n    {\"fieldname\": \"custom_shipping_status\", \"label\": \"Status\", \"fieldtype\": \"Select\", \"width\": 120},\n    {\"fieldname\": \"po_no\", \"label\": \"Customer PO No\", \"fieldtype\": \"Data\", \"width\": 120},\n    {\"fieldname\": \"customer\", \"label\": \"Customer\", \"fieldtype\": \"Link\", \"options\": \"Customer\", \"width\": 150},\n    {\"fieldname\": \"custom_container_no\", \"label\": \"Container No\", \"fieldtype\": \"Data\", \"width\": 150},\n    {\"fieldname\": \"custom_bill_of_landing\", \"label\": \"Bill of Landing\", \"fieldtype\": \"Data\", \"width\": 150},\n    {\"fieldname\": \"custom_port_of_loading\", \"label\": \"Port of Loading\", \"fieldtype\": \"Link\", \"options\": \"Location\", \"width\": 150},\n    {\"fieldname\": \"custom_port_of_discharge\", \"label\": \"Port of Discharge\", \"fieldtype\": \"Data\", \"width\": 150},\n    {\"fieldname\": \"set_warehouse\", \"label\": \"Warehouse\", \"fieldtype\": \"Link\", \"options\": \"Warehouse\", \"width\": 150},\n    {\"fieldname\": \"custom_destination\", \"label\": \"Destination\", \"fieldtype\": \"Data\", \"width\": 150},\n     {\"fieldname\": \"custom_estimated_date_of_arrival\", \"label\": \"Estimated Arrival Date\", \"fieldtype\": \"Date\", \"width\": 80},\n    {\"fieldname\": \"custom_remaining_days\", \"label\": \"Remaining Days\", \"fieldtype\": \"Data\", \"width\": 80},\n    {\"fieldname\": \"grand_total\", \"label\": \"Total Amount\", \"fieldtype\": \"Float\", \"width\": 120},\n    {\"fieldname\": \"currency\", \"label\": \"Currency\", \"fieldtype\": \"Data\", \"width\": 120},\n    {\"fieldname\": \"custom_bil\", \"label\": \"Bill of Lading\", \"fieldtype\": \"Attach\", \"width\": 120},\n    {\"fieldname\": \"custom_transit_no\", \"label\": \"Transit Number\", \"fieldtype\": \"Link\",\"options\":\"Sales Invoice\", \"width\": 120},\n]\n\n# Get filter values\nstart_date = filters.get('from_date') if filters else None\nend_date = filters.get('to_date') if filters else None\nsales_invoice = filters.get('sales_invoice')\nshipping_status = filters.get('custom_shipping_status') if filters else None\ntransit_no = filters.get('custom_transit_no') if filters else None\ncurrency = filters.get('currency') if filters else None\n\n# Construct SQL query to fetch sales invoice details including custom_remaining_days\nsql_query = f\"\"\"\n    SELECT\n        `name`, `po_no`, `custom_shipping_status`,`custom_estimated_date_of_arrival`,`custom_remaining_days`, `custom_container_no`, `custom_port_of_loading`, `custom_port_of_discharge`, `custom_bill_of_landing`,\n        `customer`, `set_warehouse`, `custom_destination`, ROUND(`grand_total`, 2) AS `grand_total`, `custom_transit_no`, `currency`, `custom_bil`\n    FROM\n        `tabSales Invoice`\n    WHERE\n        `docstatus` = 1\n        {'AND `posting_date` BETWEEN %s AND %s' if start_date and end_date else ''}\n        {'AND `name` = %s' if sales_invoice else ''}\n        {'AND `custom_shipping_status` = %s' if shipping_status else ''}\n        {'AND `custom_transit_no` LIKE %s' if transit_no else ''}\n        {('AND `currency` = %s' if currency else '')}\n        {('AND `custom_is_export_sale` = 1')}\n    {('ORDER BY `creation` DESC' if transit_no else '')}\n\"\"\"\n\n\n# Initialize SQL parameters with date filters\nsql_params = []\nif start_date and end_date:\n    sql_params.extend([start_date, end_date])\nif sales_invoice:\n    sql_params.append(sales_invoice)\nif shipping_status:\n    sql_params.append(shipping_status)\nif transit_no:\n    sql_params.append(f'%{transit_no}%')  # Use wildcard search for partial match\nif currency:\n    sql_params.append(currency)\n\n# Execute the SQL query\ndata = frappe.db.sql(sql_query, tuple(sql_params), as_dict=True)\n\n\n# Assign columns and report_data to data\nreport_data = data  # Use fetched data directly\n\ndata = columns, report_data, None, None, None\n",
+ "ref_doctype": "Shop",
+ "report_name": "Shops",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

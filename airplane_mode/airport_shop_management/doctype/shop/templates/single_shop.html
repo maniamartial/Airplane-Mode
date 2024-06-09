@@ -1,0 +1,10 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<h1>Shop Details</h1>
+<p><strong>Email:</strong> {{ shop.email }}</p>
+<p><strong>Rent:</strong> {{ shop.rent }}</p>
+<p><strong>Airport:</strong> {{ shop.airport }}</p>
+<p><strong>Physical Address:</strong> {{ shop.physical_address }}</p>
+<a href="/book-shop/{{ shop.name }}">Book Shop</a>
+{% endblock %}

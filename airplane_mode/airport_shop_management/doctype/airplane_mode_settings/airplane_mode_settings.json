@@ -6,7 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "enable_due_rent_reminder",
-  "default_rent_amount"
+  "default_rent_fee"
  ],
  "fields": [
   {
@@ -16,15 +16,15 @@
    "label": "Enable Due Rent Reminder"
   },
   {
-   "fieldname": "default_rent_amount",
+   "fieldname": "default_rent_fee",
    "fieldtype": "Currency",
-   "label": "Default Rent Amount"
+   "label": "Default Rent Fee"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-05-26 14:58:58.584279",
+ "modified": "2024-06-08 10:45:38.198749",
  "modified_by": "Administrator",
  "module": "airport Shop Management",
  "name": "Airplane Mode settings",

@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{shop}-{tenant}-{##}",
+ "autoname": "format:{shop}-{tenant}",
  "creation": "2024-05-26 15:56:41.506245",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -26,8 +26,10 @@
   {
    "fieldname": "shop",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Shop",
-   "options": "Shop"
+   "options": "Shop",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_mkpn",
@@ -36,8 +38,10 @@
   {
    "fieldname": "tenant",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Tenant",
-   "options": "Tenant"
+   "options": "Tenant",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_zxlo",
@@ -67,9 +71,12 @@
    "label": "Payment"
   },
   {
+   "fetch_from": "shop.rent_fee",
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount To Pay"
+   "in_list_view": 1,
+   "label": "Amount To Pay",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -115,8 +122,13 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-05-26 17:27:53.818040",
+ "links": [
+  {
+   "link_doctype": "Rent Payment",
+   "link_fieldname": "contract"
+  }
+ ],
+ "modified": "2024-06-08 15:46:57.729226",
  "modified_by": "Administrator",
  "module": "airport Shop Management",
  "name": "Shop Contract",

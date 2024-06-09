@@ -88,3 +88,12 @@ class AirplaneTicket(Document):
 		if seats_available<0:
 			seats_available=0
 		return seats_available
+
+@frappe.whitelist(allow_guest=True)
+def filter_gate_no():
+	airport_code=frappe.form_dict.get("airport_code")
+	gates=[]
+	airport_gate_codes=frappe.get_all("Airport Gate", filters={"airport_code": airport_code}, fields=["name"])
+	for gate in airport_gate_codes:
+		gates.append(gate.name)
+	frappe.response['message']=gates

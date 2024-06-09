@@ -1,7 +1,13 @@
 {% extends "templates/web.html" %}
 
 {% block page_content %}
-<h1>{{ title }}</h1>
+<h3>{{ title }}</h3>
+<h4>Shop Details</h4>
+<ul>
+    <li>Email: {{ doc.email }}</li>
+    <li>Rent: {{ doc.rent_fee }}</li>
+    <li>Airport: {{ doc.airport }}</li>
+    <li>Physical Address: {{ doc.physical_address }}</li>
+    <a class="btn btn-info" href="{{ frappe.get_url() }}/book-shop/new?shop={{ doc.name }}">Book Shop</a>
+</ul>
 {% endblock %}
-
-<!-- this is a sample default web page template -->
