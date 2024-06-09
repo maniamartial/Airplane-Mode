@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{gate_number}-#####",
+ "autoname": "format:{gate_number}-{airport_code}",
  "creation": "2024-05-26 14:31:11.774778",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -29,7 +29,6 @@
    "fetch_from": "airport.code",
    "fieldname": "airport_code",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "Airport Code"
   },
   {
@@ -39,7 +38,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-26 14:36:13.080241",
+ "modified": "2024-06-08 14:12:36.713683",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airport Gate",
@@ -59,7 +58,7 @@
    "write": 1
   }
  ],
- "search_fields": "gate_number, airport",
+ "search_fields": "gate_number, airport, airport_code",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

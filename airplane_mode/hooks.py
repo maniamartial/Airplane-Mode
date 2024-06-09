@@ -133,10 +133,11 @@ app_license = "agpl-3.0"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"airplane_mode.tasks.all"
-# 	],
+scheduler_events = {
+	"daily": [
+		"airplane_mode.airport_shop_management.doctype.rent_payment.rent_payment.schedular_update_status_contract_expire"
+	],
+}
 # 	"daily": [
 # 		"airplane_mode.tasks.daily"
 # 	],
@@ -150,6 +151,7 @@ app_license = "agpl-3.0"
 # 		"airplane_mode.tasks.monthly"
 # 	],
 # }
+
 
 # Testing
 # -------

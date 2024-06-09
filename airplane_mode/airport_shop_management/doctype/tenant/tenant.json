@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{####}-{MM}-{YY}",
+ "autoname": "format:{first_name}-{####}",
  "creation": "2024-05-26 15:40:52.867935",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -12,7 +12,9 @@
   "full_name",
   "photo",
   "contact_details_section",
-  "phone_number"
+  "phone_number",
+  "column_break_letl",
+  "email"
  ],
  "fields": [
   {
@@ -50,12 +52,22 @@
   {
    "fieldname": "phone_number",
    "fieldtype": "Phone",
-   "label": "Phone Number"
+   "label": "Phone Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_letl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-26 16:58:48.789479",
+ "modified": "2024-06-08 16:07:53.230746",
  "modified_by": "Administrator",
  "module": "airport Shop Management",
  "name": "Tenant",

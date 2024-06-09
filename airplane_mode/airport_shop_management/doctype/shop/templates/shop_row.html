@@ -1,4 +1,12 @@
-<div>
-	<a href="{{ doc.route }}">{{ doc.title or doc.name }}</a>
-</div>
-<!-- this is a sample default list template -->
+{% for shop in shops %}
+    {% if shop.is_published %}
+        <div class="jumbotron">
+            <h5>{{ shop.name }}</h5>
+            <p><strong>Email:</strong> {{ shop.email }}</p>
+            <p><strong>Rent:</strong> {{ shop.rent }}</p>
+            <p><strong>Airport:</strong> {{ shop.airport }}</p>
+            <p><strong>Physical Address:</strong> {{ shop.physical_address }}</p>
+            <a href="{{ frappe.get_url() }}/book-shop/{{ shop.name }}" style="color:blue">Book Shop</a>
+        </div>
+    {% endif %}
+{% endfor %}
